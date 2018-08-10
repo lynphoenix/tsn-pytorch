@@ -20,6 +20,7 @@ class VideoRecord(object):
 
     @property
     def label(self):
+        print self._data
         return int(self._data[2])
 
 
@@ -45,6 +46,7 @@ class TSNDataSet(data.Dataset):
         self._parse_list()
 
     def _load_image(self, directory, idx):
+        # directory = os.path.join(self.root_path, directory)
         if self.modality == 'RGB' or self.modality == 'RGBDiff':
             return [Image.open(os.path.join(directory, self.image_tmpl.format(idx))).convert('RGB')]
         elif self.modality == 'Flow':
